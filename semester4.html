@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester 4 - Ehren Gelen Stanislaw (Transformers Theme)</title>
+
+    <!-- Link ke File CSS Terpisah -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Script Baca Tema Langsung di Head (Mencegah Kilatan Warna) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('transformersTheme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('theme-megatron');
+            } else {
+                document.documentElement.classList.add('theme-optimus');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <!-- Header Logo Kanan Atas -->
+        <div class="header-logo">
+            <img src="gambar/logo.png" alt="Logo">
+        </div>
+
+        <!-- Judul Halaman -->
+        <h1 class="about-title">Semester 4</h1>
+
+        <!-- Pembungkus Konten Proyek -->
+        <div class="content-wrapper" id="contentWrapper">
+            
+            <!-- PROYEK 1: WEB SERVER VIDEO STREAMING (KARTU KIRI) -->
+            <div class="project-card card-left">
+                <div class="card-layout">
+                    <div class="project-info" style="width: 100%;">
+                        <div class="badge">Web Server Audio & Video Streaming</div>
+                    </div>
+                    
+                    <!-- Media Double Image -->
+                    <div class="project-media">
+                        <div class="double-image">
+                            <img src="gambar/gs4_1_1.png" alt="Web Server Video Streaming Dashboard" onerror="this.onerror=null; this.src='gambar/gs4_1_1.jpg';">
+                            <img src="gambar/gs4_1_2.jpeg" alt="Web Server Video Streaming Architecture" onerror="this.onerror=null; this.src='gambar/gs4_1_2.jpg';">
+                        </div>
+                    </div>
+
+                    <div class="project-info" style="width: 100%;">
+                        <div class="project-desc">
+                            <p style="margin-bottom: 12px;">
+                                <strong>Arsitektur Server Siaran Live Multimedia (Ubuntu Linux):</strong><br>
+                                Proyek ini berfokus pada pembangunan dan konfigurasi infrastruktur web server siaran langsung (<em>live broadcast</em>) audio/video berbasis sistem operasi Ubuntu Server.
+                            </p>
+                            <p style="margin-bottom: 12px;">
+                                <strong>Konfigurasi & Perangkat Lunak:</strong>
+                            </p>
+                            <ul>
+                                <li><strong>Live Audio Encoder & Broadcast:</strong> Mengintegrasikan perangkat lunak <strong>DarkIce</strong> (sebagai <em>encoder audio live</em> langsung dari input mikrofon) dan <strong>Icecast2</strong> (sebagai <em>streaming media server</em>).</li>
+                                <li><strong>Optimasi & Aksesibilitas Jaringan:</strong> Dikonfigurasi untuk menangani permintaan <em>multi-client streaming</em> secara simultan melalui jaringan lokal maupun publik dengan latensi rendah dan stabilitas koneksi yang teruji.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Link Repository GitHub -->
+                        <div class="project-link-wrapper">
+                            <a href="https://github.com/04ehrengelen/proyek-Web-Server-Video-Streaming" target="_blank" class="project-link">
+                                💻 Lihat Repositori GitHub Proyek
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYEK 2: LAPAK 3D - MARKETPLACE ASET 3D (KARTU KANAN) -->
+            <div class="project-card card-right">
+                <div class="card-layout">
+                    <div class="project-info" style="width: 100%;">
+                        <div class="badge">Lapak 3D: E-Commerce Marketplace Aset 3D</div>
+                    </div>
+                    
+                    <!-- Media Gambar Lapak 3D -->
+                    <div class="project-media single-image">
+                        <img src="gambar/gs4_2.png" alt="Lapak 3D E-Commerce Marketplace" onerror="this.onerror=null; this.src='gambar/gs4_2.jpg';">
+                    </div>
+
+                    <div class="project-info" style="width: 100%;">
+                        <div class="project-desc">
+                            <p style="margin-bottom: 12px;">
+                                <strong>Platform Marketplace Berbelanja Aset 3D Interaktif:</strong><br>
+                                Lapak 3D adalah platform <em>e-commerce</em> yang dirancang khusus untuk transaksi jual-beli dan pameran aset digital 3D.
+                            </p>
+                            <p style="margin-bottom: 12px;">
+                                <strong>Fitur & Keunggulan Platform:</strong>
+                            </p>
+                            <ul>
+                                <li><strong>Inspeksi Produk 360° Real-Time:</strong> Calon pembeli dapat melihat, memutar, dan memeriksa detail tekstur serta pencahayaan model 3D secara langsung dari peramban (<em>browser</em>) sebelum memutuskan untuk membeli.</li>
+                                <li><strong>Pengalaman Belanja Modern:</strong> Mengintegrasikan sistem katalog produk interaktif untuk kreator aset 3D, pengembang game, dan desainer dalam memasarkan karya digital secara profesional tanpa perlu instalasi <em>plugin</em> tambahan.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Link Web Demo Lapak 3D -->
+                        <div class="project-link-wrapper">
+                            <a href="https://04ehrengelen.github.io/proyek-UAS-web-multimedia/" target="_blank" class="project-link">
+                                🌐 Kunjungi Platform Lapak 3D
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYEK 3: MEMOSPACE - FLUTTER MOBILE APP (KARTU KIRI) -->
+            <div class="project-card card-left">
+                <div class="card-layout">
+                    <div class="project-info" style="width: 100%;">
+                        <div class="badge">Memospace: Aplikasi Mobile Note & Reminder</div>
+                    </div>
+                    
+                    <!-- Media Gambar Memospace -->
+                    <div class="project-media single-image">
+                        <img src="gambar/gs4_3.jpeg" alt="Memospace Mobile Application" onerror="this.onerror=null; this.src='gambar/gs4_3.jpg';">
+                    </div>
+
+                    <div class="project-info" style="width: 100%;">
+                        <div class="project-desc">
+                            <p style="margin-bottom: 12px;">
+                                <strong>Pengembangan Aplikasi Mobile Manajemen Catatan & Pengingat:</strong><br>
+                                Memospace adalah aplikasi <em>mobile productivity</em> yang dirancang untuk mengorganisir memori, tugas harian, dan jadwal kegiatan dengan antarmuka yang bersih, intuitif, dan responsif.
+                            </p>
+                            <p style="margin-bottom: 12px;">
+                                <strong>Fitur Aplikasi & Framework Flutter:</strong>
+                            </p>
+                            <ul>
+                                <li><strong>Cross-Platform Development:</strong> Dikembangkan menggunakan framework <strong>Flutter</strong> untuk performa antarmuka yang mulus pada perangkat Android.</li>
+                                <li><strong>Sistem Pengelompokan & Penyimpanan:</strong> Dilengkapi fitur pengelompokan memori berbasis label warna, pencarian cepat, serta manajemen penyimpanan lokal & cloud.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Link Repository GitHub -->
+                        <div class="project-link-wrapper">
+                            <a href="https://github.com/arguspermono/mobile-memospace" target="_blank" class="project-link">
+                                📱 Lihat Source Code Flutter di GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYEK 4: FIND IT MALL ADVENTURE - MIXED REALITY GAME (KARTU KANAN) -->
+            <div class="project-card card-right">
+                <div class="card-layout">
+                    <div class="project-info" style="width: 100%;">
+                        <div class="badge">Find it Mall Adventure (Mixed Reality Game)</div>
+                    </div>
+                    
+                    <!-- Media Gambar Find It Mall Adventure -->
+                    <div class="project-media single-image">
+                        <img src="gambar/gs4_4.png" alt="Find it Mall Adventure Mixed Reality Game" onerror="this.onerror=null; this.src='gambar/gs4_4.jpg';">
+                    </div>
+
+                    <div class="project-info" style="width: 100%;">
+                        <div class="project-desc">
+                            <p style="margin-bottom: 12px;">
+                                <strong>Game Eksplorasi Interaktif Berbasis Mixed Reality (MR):</strong><br>
+                                Game petualangan interaktif yang menggabungkan lingkungan nyata dengan elemen virtual 3D dalam simulasi pencarian target dan penyelesaian teka-teki berlatar belakang pusat perbelanjaan (<em>mall</em>).
+                            </p>
+                            <p style="margin-bottom: 12px;">
+                                <strong>Arsitektur Game Engine & Imersivitas:</strong>
+                            </p>
+                            <ul>
+                                <li><strong>Unity Engine & Framework MR:</strong> Dikembangkan di atas <strong>Unity Engine</strong> memanfaatkan <strong>Vuforia Engine</strong> dan <strong>OpenXR</strong> untuk pelacakan target (<em>image target tracking</em>) serta pemetaan interaksi 3D yang akurat.</li>
+                                <li><strong>Gameplay Mechanics:</strong> Menawarkan pengalaman eksplorasi imersif melalui tantangan petunjuk, interaksi objek spatial, dan penyelesaian teka-teki secara <em>real-time</em>.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Dual Link: Github & Download APK -->
+                        <div class="project-link-wrapper">
+                            <a href="https://github.com/Narvik1/MR-Project-1" target="_blank" class="project-link">
+                                🎮 Repositori Unity di GitHub
+                            </a>
+                            <a href="https://drive.google.com/drive/folders/13wGlvbpzHidj7IlO-61IsI5YyHvM-k0U?usp=sharing" target="_blank" class="project-link">
+                                📦 Unduh File Build APK Game
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Tombol Kembali ke Halaman My Proyek -->
+        <div class="button-group">
+            <a href="proyek.html" class="btn btn-semester-back" id="backBtn">Back To My Proyek</a>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT HANDLING ANIMASI TRANSISI KELUAR -->
+    <script>
+        const backBtn = document.getElementById('backBtn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        backBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // Menahan perpindahan halaman sementara
+            const targetUrl = this.getAttribute('href');
+
+            // Tambahkan kelas animasi keluar (retract)
+            backBtn.classList.add('retract');
+            projectCards.forEach(card => card.classList.add('retract'));
+
+            // Tunggu durasi animasi (0.5 detik), lalu pindah ke proyek.html
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 500);
+        });
+    </script>
+
+</body>
+</html>

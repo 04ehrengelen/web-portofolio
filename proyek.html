@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Proyek - Ehren Gelen Stanislaw (Transformers Theme)</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Script Baca Tema Langsung di Head -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('transformersTheme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('theme-megatron');
+            } else {
+                document.documentElement.classList.add('theme-optimus');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <!-- Header Logo Kanan Atas -->
+        <div class="header-logo">
+            <img src="gambar/logo.png" alt="Logo">
+        </div>
+
+        <!-- PANEL LATAR BELAKANG ABU-ABU DENGAN ANIMASI MEKAR/MENUTUP -->
+        <div class="proyek-wrapper" id="proyekWrapper">
+            <div class="proyek-content">
+                <h1 class="proyek-title">Proyek</h1>
+                
+                <a href="semester4.html" class="semester-box">semester 4</a>
+                <a href="semester3.html" class="semester-box">semester 3</a>
+                <a href="semester2.html" class="semester-box">semester 2</a>
+                <a href="semester1.html" class="semester-box">semester 1</a>
+            </div>
+        </div>
+
+        <!-- TOMBOL BACK TO HOME DENGAN ANIMASI ROLL-OUT & ROLL-IN -->
+        <div class="button-group">
+            <a href="index.html" class="btn btn-proyek-back" id="backBtn">Back To Home</a>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT HANDLING ANIMASI OUT SAAT DIKLIK -->
+    <script>
+        const backBtn = document.getElementById('backBtn');
+        const proyekWrapper = document.getElementById('proyekWrapper');
+
+        backBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // Tahan perpindahan halaman sementara
+            const targetUrl = this.getAttribute('href');
+
+            // Tambahkan kelas animasi keluar (out)
+            backBtn.classList.add('retract');
+            proyekWrapper.classList.add('retract');
+
+            // Tunggu animasi out selesai (0.5 detik), lalu pindah halaman
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 500);
+        });
+    </script>
+
+</body>
+</html>

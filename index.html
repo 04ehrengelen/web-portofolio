@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Portofolio - Ehren Gelen Stanislaw</title>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Script Baca Tema Langsung di Head -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('transformersTheme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('theme-megatron');
+            } else if (savedTheme === 'light') {
+                document.documentElement.classList.add('theme-optimus');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- OVERLAY PILIHAN SISI -->
+    <div class="faction-overlay" id="factionOverlay">
+        <div class="faction-side side-dark" onclick="selectTheme('dark')">
+            <div class="faction-title">DARK</div>
+        </div>
+        
+        <div class="faction-side side-light" onclick="selectTheme('light')">
+            <div class="faction-title">LIGHT</div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+        
+        <div class="header-top">
+            <button class="faction-switch-btn" onclick="showOverlay()">⚡ Change Side</button>
+            <div class="header-logo">
+                <img src="gambar/logo.png" alt="Logo">
+            </div>
+        </div>
+
+        <div class="content-section" id="contentSection">
+            <div class="intro-text">
+                Introducing<br>
+                My Name Is<br>
+                Ehren Gelen Stanislaw
+            </div>
+            
+            <div class="profile-side">
+                <div class="hello-title">Hello</div>
+                <img src="gambar/foto diri.jpeg" alt="Foto Diri" class="profile-photo">
+            </div>
+        </div>
+
+        <div class="button-group">
+            <a href="proyek.html" class="btn nav-btn">My Proyek</a>
+            <a href="aboutme.html" class="btn nav-btn">About Me</a>
+        </div>
+
+    </div>
+
+    <script>
+        function applyTheme(type) {
+            document.documentElement.classList.remove('theme-optimus', 'theme-megatron');
+            if (type === 'light') {
+                document.documentElement.classList.add('theme-optimus');
+            } else if (type === 'dark') {
+                document.documentElement.classList.add('theme-megatron');
+            }
+        }
+
+        function selectTheme(type) {
+            applyTheme(type);
+            localStorage.setItem('transformersTheme', type);
+            document.getElementById('factionOverlay').classList.add('hidden');
+        }
+
+        function showOverlay() {
+            document.getElementById('factionOverlay').classList.remove('hidden');
+        }
+
+        // Cek Pilihan Sisi Terseimpan
+        const savedTheme = localStorage.getItem('transformersTheme');
+        const overlay = document.getElementById('factionOverlay');
+
+        if (savedTheme) {
+            overlay.classList.add('hidden');
+        } else {
+            overlay.classList.remove('hidden');
+        }
+
+        // ANIMASI TRANSISI KELUAR PADA NAVIGASI
+        document.addEventListener('DOMContentLoaded', () => {
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const contentSection = document.getElementById('contentSection');
+
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault(); // Menghentikan navigasi langsung
+                    const targetUrl = this.getAttribute('href');
+
+                    // Terapkan animasi keluar pada bagian tengah & tombol-tombol
+                    contentSection.classList.add('retract');
+                    navButtons.forEach(b => b.classList.add('retract'));
+
+                    // Beri jeda 0.5 detik agar animasi out selesai merender sebelum pindah halaman
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

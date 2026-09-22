@@ -1,0 +1,857 @@
+/* Import Font Cyber/Sci-Fi */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap');
+
+/* Reset margin dan padding */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+/* ==========================================
+   1. OVERLAY PEMILIHAN FACTION / SISI
+   ========================================== */
+.faction-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    z-index: 9999;
+    background-color: #000;
+}
+
+.faction-overlay.hidden {
+    display: none !important;
+}
+
+.faction-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Sisi Kiri: DARK (Megatron) */
+.side-dark {
+    background: linear-gradient(135deg, #121212 0%, #2a2a2a 50%, #4b0082 100%);
+    border-right: 3px solid #9400d3;
+}
+
+.side-dark:hover {
+    transform: scale(1.02);
+    filter: brightness(1.2);
+}
+
+/* Sisi Kanan: LIGHT (Optimus Prime) */
+.side-light {
+    background: linear-gradient(135deg, #000046 0%, #1cb5e0 50%, #d31027 100%);
+    border-left: 3px solid #00d2ff;
+}
+
+.side-light:hover {
+    transform: scale(1.02);
+    filter: brightness(1.2);
+}
+
+.faction-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.side-dark .faction-title {
+    color: #d896ff;
+    text-shadow: 0 0 20px #8a2be2;
+}
+
+.side-light .faction-title {
+    color: #ffffff;
+    text-shadow: 0 0 20px #ff2a2a;
+}
+
+.faction-subtext {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ddd;
+}
+
+/* ==========================================
+   2. TEMA WARNA (OPTIMUS PRIME & MEGATRON)
+   ========================================== */
+html {
+    background-color: #0b0c10;
+    color: #ffffff;
+}
+
+/* Tema LIGHT (Optimus Prime: Merah & Biru) */
+html.theme-optimus body {
+    background: linear-gradient(180deg, #020b30 0%, #001242 40%, #8b0000 100%);
+    color: #ffffff;
+}
+
+html.theme-optimus .main-container {
+    border: 4px solid #00d2ff;
+    box-shadow: inset 0 0 20px #0055ff, 0 0 30px rgba(0, 162, 255, 0.4);
+    background: rgba(2, 11, 48, 0.85);
+}
+
+html.theme-optimus .btn {
+    background: linear-gradient(90deg, #d31027 0%, #ea384d 100%);
+    color: #ffffff;
+    border: 2px solid #00d2ff;
+    box-shadow: 0 0 15px rgba(211, 16, 39, 0.6);
+}
+
+html.theme-optimus .btn:hover {
+    background: linear-gradient(90deg, #ea384d 0%, #d31027 100%);
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.8);
+}
+
+html.theme-optimus .profile-photo {
+    background-color: #d31027;
+    border: 2px solid #00d2ff;
+    box-shadow: 0px 0px 20px rgba(0, 210, 255, 0.6);
+}
+
+html.theme-optimus .hello-title,
+html.theme-optimus .intro-text,
+html.theme-optimus .about-title,
+html.theme-optimus .about-text {
+    color: #ffffff;
+    text-shadow: 0 0 10px #00d2ff;
+}
+
+/* Tema DARK (Megatron: Abu-abu Metalik & Ungu) */
+html.theme-megatron body {
+    background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 50%, #3a005c 100%);
+    color: #e0e0e0;
+}
+
+html.theme-megatron .main-container {
+    border: 4px solid #9400d3;
+    box-shadow: inset 0 0 20px #8a2be2, 0 0 30px rgba(148, 0, 211, 0.4);
+    background: rgba(20, 20, 20, 0.85);
+}
+
+html.theme-megatron .btn {
+    background: linear-gradient(90deg, #4b0082 0%, #8a2be2 100%);
+    color: #ffffff;
+    border: 2px solid #d896ff;
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+}
+
+html.theme-megatron .btn:hover {
+    background: linear-gradient(90deg, #8a2be2 0%, #4b0082 100%);
+    box-shadow: 0 0 25px rgba(216, 150, 255, 0.8);
+}
+
+html.theme-megatron .profile-photo {
+    background-color: #4b0082;
+    border: 2px solid #d896ff;
+    box-shadow: 0px 0px 20px rgba(138, 43, 226, 0.6);
+}
+
+html.theme-megatron .hello-title,
+html.theme-megatron .intro-text,
+html.theme-megatron .about-title,
+html.theme-megatron .about-text {
+    color: #e0e0e0;
+    text-shadow: 0 0 10px #8a2be2;
+}
+
+/* ==========================================
+   3. LAYOUT CONTAINER UTAMA & ELEMEN
+   ========================================== */
+.main-container {
+    width: 100vw;
+    min-height: 100vh;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header-logo {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.faction-switch-btn {
+    background: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 8px 16px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.faction-switch-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.header-logo img {
+    width: 90px;
+    height: auto;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+/* Konten Halaman Index */
+.content-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.intro-text {
+    width: 50%;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.profile-side {
+    width: 35%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hello-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.profile-photo {
+    width: 100%;
+    height: auto;
+    padding: 12px;
+    object-fit: cover;
+    clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+}
+
+/* Konten Halaman About Me */
+.about-content {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+    margin-bottom: auto;
+    padding: 0 20px;
+}
+
+.about-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+}
+
+.about-text {
+    font-size: 2rem;
+    line-height: 1.5;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: relative;
+    padding-left: 15px;
+    border-left: 3px solid currentColor;
+}
+
+/* Styling Tombol Dasar */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn {
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 16px 0;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+}
+
+.btn:hover {
+    transform: scale(1.03);
+}
+
+/* ==========================================
+   4. STYLE PROYEK & KOTAK ANIMASI MEKAR
+   ========================================== */
+
+/* Wadah Latar Belakang Abu-Abu Metalik Proyek */
+.proyek-wrapper {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+    margin-bottom: auto;
+    padding: 30px;
+    border-radius: 8px;
+    
+    background: linear-gradient(135deg, #3a3a3a 0%, #5a5a5a 50%, #2a2a2a 100%);
+    border: 3px solid #888888;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.1);
+    
+    animation: expandBox 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform-origin: center center;
+}
+
+/* Keyframes Animasi: Kotak Mekar dari Tengah */
+@keyframes expandBox {
+    0% {
+        opacity: 0;
+        transform: scaleY(0.02) scaleX(0.1);
+        filter: blur(10px);
+    }
+    50% {
+        opacity: 1;
+        transform: scaleY(0.05) scaleX(1);
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1) scaleX(1);
+        filter: blur(0);
+    }
+}
+
+/* Keyframes Animasi: Kotak Melipat Kembali (Retract) */
+@keyframes collapseBox {
+    0% {
+        opacity: 1;
+        transform: scaleY(1) scaleX(1);
+        filter: blur(0);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scaleY(0.05) scaleX(1);
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 0;
+        transform: scaleY(0.02) scaleX(0.1);
+        filter: blur(10px);
+    }
+}
+
+/* Konten Isi Semester */
+.proyek-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    opacity: 0;
+    animation: fadeInContent 0.5s ease forwards;
+    animation-delay: 0.8s;
+}
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.proyek-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Styling Tombol Pilihan Semester */
+.semester-box {
+    display: block;
+    width: 100%;
+    padding: 18px 25px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+}
+
+html.theme-optimus .semester-box {
+    background: linear-gradient(90deg, #001242 0%, #002b80 100%);
+    color: #ffffff;
+    border: 2px solid #00d2ff;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+
+html.theme-optimus .semester-box:hover {
+    background: linear-gradient(90deg, #d31027 0%, #ea384d 100%);
+    box-shadow: 0 0 20px rgba(211, 16, 39, 0.8);
+    transform: scale(1.02);
+}
+
+html.theme-megatron .semester-box {
+    background: linear-gradient(90deg, #2a2a2a 0%, #4b0082 100%);
+    color: #e0e0e0;
+    border: 2px solid #d896ff;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+html.theme-megatron .semester-box:hover {
+    background: linear-gradient(90deg, #4b0082 0%, #8a2be2 100%);
+    box-shadow: 0 0 20px rgba(216, 150, 255, 0.8);
+    transform: scale(1.02);
+}
+
+/* ==========================================
+   5. STYLE KARTU & MEDIA HALAMAN SEMESTER (1 - 4)
+   ========================================== */
+
+/* Layout Kartu Proyek */
+.project-card {
+    padding: 35px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
+    width: 85%;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Jalankan Animasi Mekar Kotak saat pertama terbuka */
+    animation: expandBox 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform-origin: center center;
+    box-sizing: border-box;
+    overflow: hidden; /* Mencegah elemen dalam terpotong kasar */
+}
+
+html.theme-optimus .project-card {
+    background: rgba(2, 11, 48, 0.9);
+    border: 2px solid #00d2ff;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+}
+
+html.theme-megatron .project-card {
+    background: rgba(20, 20, 20, 0.9);
+    border: 2px solid #9400d3;
+    color: #e0e0e0;
+    box-shadow: 0 0 20px rgba(148, 0, 211, 0.3);
+}
+
+.card-left {
+    align-self: flex-start;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.card-right {
+    align-self: flex-end;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Animasi Elemen Dalam Kartu Proyek */
+.project-card .project-info,
+.project-card .project-media {
+    opacity: 0;
+    animation: fadeInContent 0.5s ease forwards;
+    animation-delay: 0.8s;
+}
+
+/* Badge Judul Proyek */
+.badge {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    padding: 10px 25px;
+    border-radius: 6px;
+    width: fit-content;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+html.theme-optimus .badge {
+    background: linear-gradient(90deg, #d31027 0%, #ea384d 100%);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(211, 16, 39, 0.6);
+}
+
+html.theme-megatron .badge {
+    background: linear-gradient(90deg, #4b0082 0%, #8a2be2 100%);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
+}
+
+/* Deskripsi Teks Proyek */
+.project-desc {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    letter-spacing: 0.5px;
+}
+
+.project-desc ul {
+    margin-left: 20px;
+    margin-top: 8px;
+}
+
+.project-desc li {
+    margin-bottom: 6px;
+}
+
+/* Styling Link Proyek */
+.project-link-wrapper {
+    margin-top: 15px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.project-link {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: underline;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s ease;
+}
+
+html.theme-optimus .project-link {
+    color: #00d2ff;
+}
+
+html.theme-optimus .project-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px #00d2ff;
+}
+
+html.theme-megatron .project-link {
+    color: #d896ff;
+}
+
+html.theme-megatron .project-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px #d896ff;
+}
+
+/* Media Gambar & Tata Letak Kartu */
+.logo-layout {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.logo-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 180px;
+    flex-shrink: 0;
+}
+
+.logo-stack img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+.prod-layout, .card-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+}
+
+.single-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.single-image img {
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+}
+
+/* GAMBAR GANDA UNTUK PROYEK STREAMING SERVER (SEMESTER 4) */
+.double-image {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.double-image img {
+    width: 100%;
+    max-width: 100%; /* Dikunci agar tidak pernah melebih background kartu */
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+}
+
+html.theme-optimus .double-image img {
+    border: 1px solid #00d2ff;
+}
+
+html.theme-megatron .double-image img {
+    border: 1px solid #d896ff;
+}
+
+/* PEMUTAR VIDEO DI TAMPILKAN LEBIH BESAR (ANIMASI 2D & VIDEO MAPPING) */
+.video-container {
+    width: 100%;
+    max-width: 800px; /* Diperbesar agar tampilan video luas & jelas */
+    aspect-ratio: 16 / 9;
+    margin: 10px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #000000;
+    transition: all 0.3s ease;
+}
+
+html.theme-optimus .video-container {
+    border: 2px solid #00d2ff;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+}
+
+html.theme-megatron .video-container {
+    border: 2px solid #d896ff;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ==========================================
+   6. ANIMASI TOMBOL ROLL-OUT & ROLL-IN (RETRACT)
+   ========================================== */
+
+/* Animasi Masuk (Roll-Out Mekanik) untuk Tombol Navigasi Back */
+.btn-proyek-back,
+.btn-about-back,
+.btn-semester-back {
+    animation: autobotRollOut 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes autobotRollOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px) scaleX(0.2);
+        clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(10px) scaleX(1.05);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scaleX(1);
+        clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+    }
+}
+
+/* Animasi Keluar (Retract Mekanik) */
+.btn-proyek-back.retract,
+.btn-about-back.retract,
+.btn-semester-back.retract,
+.nav-btn.retract {
+    animation: autobotRollIn 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards !important;
+}
+
+@keyframes autobotRollIn {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scaleX(1);
+        clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+    }
+    40% {
+        opacity: 0.8;
+        transform: translateY(10px) scaleX(1.05);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-40px) scaleX(0.1);
+        clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+    }
+}
+
+/* Animasi Retract Kotak / Kartu saat Pindah Halaman */
+.proyek-wrapper.retract,
+.project-card.retract {
+    animation: collapseBox 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards !important;
+}
+
+/* Animasi Retract Konten Index & About Me */
+.content-section.retract,
+.about-content.retract {
+    animation: fadeOutContent 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards !important;
+}
+
+@keyframes fadeOutContent {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+        filter: blur(5px);
+    }
+}
+
+/* ==========================================
+   7. RESPONSIVE LAYOUT (HP & TABLET)
+   ========================================== */
+@media (max-width: 900px) {
+    .faction-overlay {
+        flex-direction: column;
+    }
+    .faction-title {
+        font-size: 2.2rem;
+    }
+    .main-container {
+        padding: 20px;
+    }
+    .header-logo img {
+        width: 60px;
+    }
+    .content-section {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+    .intro-text {
+        width: 100%;
+        font-size: 1.5rem;
+    }
+    .hello-title {
+        font-size: 2.2rem;
+    }
+    .profile-side {
+        width: 70%;
+    }
+    .about-content {
+        gap: 20px;
+        margin-top: 10px;
+    }
+    .about-title, .proyek-title {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+    .about-text {
+        font-size: 1.2rem;
+        padding-left: 10px;
+    }
+    .project-card {
+        width: 95%;
+        align-self: center;
+        border-radius: 4px;
+        padding: 20px;
+    }
+    .logo-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+    .logo-stack {
+        width: 140px;
+    }
+    .badge {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+    }
+    .project-desc {
+        font-size: 1rem;
+    }
+    .project-link {
+        font-size: 1rem;
+    }
+    .semester-box {
+        font-size: 1.2rem;
+        padding: 14px 18px;
+    }
+    .btn {
+        font-size: 1.1rem;
+        padding: 12px 0;
+        max-width: 280px;
+    }
+}

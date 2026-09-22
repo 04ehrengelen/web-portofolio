@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester 2 - Ehren Gelen Stanislaw (Transformers Theme)</title>
+
+    <!-- Link ke File CSS Terpisah -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Script Baca Tema Langsung di Head (Mencegah Kilatan Warna) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('transformersTheme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('theme-megatron');
+            } else {
+                document.documentElement.classList.add('theme-optimus');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <!-- Header Logo Kanan Atas -->
+        <div class="header-logo">
+            <img src="gambar/logo.png" alt="Logo">
+        </div>
+
+        <!-- Judul Halaman -->
+        <h1 class="about-title">Semester 2</h1>
+
+        <!-- Pembungkus Konten Proyek -->
+        <div class="content-wrapper" id="contentWrapper">
+            
+            <!-- PROYEK 1: VISUAL NOVEL LEMBU SURO (KARTU KIRI) -->
+            <div class="project-card card-left">
+                <div class="card-layout">
+                    <div class="project-info" style="width: 100%;">
+                        <div class="badge">Visual Novel: Legenda Lembu Suro</div>
+                    </div>
+                    
+                    <!-- Media Gambar Sampul Game -->
+                    <div class="project-media single-image">
+                        <img src="gambar/gs2_1.jpeg" alt="Visual Novel Lembu Suro">
+                    </div>
+
+                    <div class="project-info" style="width: 100%;">
+                        <div class="project-desc">
+                            <p style="margin-bottom: 12px;">
+                                <strong>Perancangan Game Interaktif Berbasis Cerita Rakyat:</strong><br>
+                                Proyek ini merupakan pengembangan game *Visual Novel* yang mengadaptasi legenda lokal "Lembu Suro & Gunung Kelud". Permainan dirancang dengan pendekatan naratif interaktif, di mana setiap keputusan pemain menentukan alur cerita (*branching narrative*).
+                            </p>
+                            <p style="margin-bottom: 12px;">
+                                <strong>Fitur & Fitur Mekanik Game:</strong>
+                            </p>
+                            <ul>
+                                <li><strong>Interaktivitas Naratif:</strong> Sistem dialog bercabang untuk meningkatkan keterlibatan emosional pemain.</li>
+                                <li><strong>Mekanik Teka-Teki (Puzzle Solving):</strong> Integrasi mini-game teka-teki logika sebagai syarat progresivitas alur cerita.</li>
+                                <li><strong>Asset Design & Prototyping:</strong> Penyusunan jalan cerita, ilustrasi karakter, background art, serta pengujian antarmuka pemain (*UI/UX*).</li>
+                            </ul>
+                        </div>
+
+                        <!-- Link Main Game -->
+                        <div class="project-link-wrapper">
+                            <a href="https://rakamenouya.itch.io/legenda-gunung-kelud-lembu-suro-1" target="_blank" class="project-link">
+                                🕹️ Mainkan Game di Itch.io
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYEK 2: ANIMASI 2D (KARTU KANAN) -->
+            <div class="project-card card-right">
+                <div class="card-layout">
+                    <div class="project-info" style="width: 100%;">
+                        <div class="badge">Animasi 2D: Edukasi Toleransi & Keberagaman</div>
+                    </div>
+                    
+                    <!-- Embed Video Google Drive -->
+                    <div class="project-media">
+                        <div class="video-container">
+                            <iframe 
+                                src="https://drive.google.com/file/d/16IMjdILwAfc19EXy4ZHsuAe4jhlxng_d/preview" 
+                                allow="autoplay; encrypted-media" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <div class="project-info" style="width: 100%;">
+                        <div class="project-desc">
+                            <p style="margin-bottom: 12px;">
+                                <strong>Produksi Video Animasi Edukatif 2D:</strong><br>
+                                Proyek animasi 2D ini mengusung pesan sosial tentang pentingnya toleransi, keberagaman budaya, dan sikap saling menghargai antar-umat beragama dalam kehidupan bermasyarakat.
+                            </p>
+                            <p style="margin-bottom: 12px;">
+                                <strong>Pendekatan Visual & Produksi:</strong>
+                            </p>
+                            <ul>
+                                <li><strong>Stilasi Karakter:</strong> Mengadopsi referensi gaya visual eksplanatoris pop-muda (serupa dengan gaya kanal edukasi *Kok Bisa?*) untuk menyampaikan materi yang ramah dan mudah dipahami.</li>
+                                <li><strong>Alur Produksi:</strong> Terlibat dalam tahapan *storyboarding*, perancangan aset karakter digital, pergerakan animasi (*motion & rigging*), hingga *audio synchronization*.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Tombol Kembali ke Halaman My Proyek -->
+        <div class="button-group">
+            <a href="proyek.html" class="btn btn-semester-back" id="backBtn">Back To My Proyek</a>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT HANDLING ANIMASI TRANSISI KELUAR -->
+    <script>
+        const backBtn = document.getElementById('backBtn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        backBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // Menahan perpindahan halaman sementara
+            const targetUrl = this.getAttribute('href');
+
+            // Tambahkan kelas animasi keluar (retract)
+            backBtn.classList.add('retract');
+            projectCards.forEach(card => card.classList.add('retract'));
+
+            // Tunggu durasi animasi (0.5 detik), lalu pindah ke proyek.html
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 500);
+        });
+    </script>
+
+</body>
+</html>

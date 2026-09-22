@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester 1 - Ehren Gelen Stanislaw (Transformers Theme)</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Script Baca Tema Langsung di Head -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('transformersTheme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('theme-megatron');
+            } else {
+                document.documentElement.classList.add('theme-optimus');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <!-- Header Logo Kanan Atas -->
+        <div class="header-logo">
+            <img src="gambar/logo.png" alt="Logo">
+        </div>
+
+        <!-- Judul Halaman -->
+        <h1 class="about-title">Semester 1</h1>
+
+        <!-- Pembungkus Konten Proyek -->
+        <div class="content-wrapper" id="contentWrapper">
+            
+            <!-- PROYEK 1: DESAIN LOGO -->
+            <div class="project-card card-left">
+                <div class="logo-layout">
+                    <div class="project-info">
+                        <div class="badge">Desain Logo & Visual Identity</div>
+                        <div class="project-desc">
+                            <p style="margin-bottom: 12px;">
+                                Proyek ini berfokus pada pemuatan identitas visual personal (Personal Branding) melalui filosofi penggabungan dua elemen simbolis utama: <strong>Karakter Anjing</strong> (merepresentasikan kesetiaan, ketangguhan, dan kerja keras sesuai Shio kelahiran) serta <strong>Elemen Api</strong> (merepresentasikan semangat, passion, dan kreativitas yang dinamis).
+                            </p>
+                            <p style="margin-bottom: 12px;">
+                                <strong>Pendekatan Psikologi Warna & Vektor:</strong><br>
+                                Pemilihan warna biru digunakan untuk memberikan kesan profesional, ketenangan, rasa percaya (*trustworthiness*), dan tanggung jawab. Seluruh proses perancangan visual dari pembuatan sketsa dasar hingga eksekusi bentuk linier presisi dikerjakan menggunakan software berbasis vektor industri, <strong>Adobe Illustrator</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Media Logo -->
+                    <div class="project-media">
+                        <div class="logo-stack">
+                            <img src="gambar/logo.png" alt="Logo Konsep Utama">
+                            <img src="gambar/logo1.jpg" alt="Variasi Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYEK 2: MANAJEMEN PRODUKSI (MIT) -->
+            <div class="project-card card-right">
+                <div class="prod-layout">
+                    <div class="project-info">
+                        <div class="badge">Manajemen Produksi: Interactive Table (MIT)</div>
+                    </div>
+                    
+                    <!-- Gambar Banner/Mockup Produk -->
+                    <div class="project-media single-image">
+                        <img src="gambar/gs1_2.png" alt="Multitouch Interactive Table Project">
+                    </div>
+
+                    <div class="project-info">
+                        <div class="project-desc">
+                            <p style="margin-bottom: 12px;">
+                                <strong>Proyek Rencana Bisnis & Produk Cybernetics: Multitouch Interactive Table (MIT)</strong><br>
+                                MIT merupakan konsep perancangan perangkat keras interaktif yang mengintegrasikan fungsionalitas furnitur (meja) dengan layar sentuh multi-titik (*multitouch system*) berkinerja tinggi yang terhubung pada sistem operasi komputasi terpadu.
+                            </p>
+                            <p style="margin-bottom: 10px;">
+                                <strong>Peran & Tanggung Jawab Utama:</strong>
+                            </p>
+                            <ul>
+                                <li><strong>Perancangan & Spesifikasi Produk:</strong> Menyusun analisis fungsionalitas perangkat, keunggulan ergonometris, serta identifikasi keterbatasan teknis produk.</li>
+                                <li><strong>Studi Kelayakan & Persiapan Produksi:</strong> Mengorganisir tahap perencanaan alur produksi, manajemen material, dan pemetaan segmen pasar sasaran.</li>
+                                <li><strong>Dokumentasi Visual & Katalog:</strong> Menyusun portofolio presentasi produk berupa buku digital interaktif untuk kebutuhan pemasaran.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Link Flipbook Proyek -->
+                        <div class="project-link-wrapper">
+                            <a href="https://online.fliphtml5.com/boefa/zrab/#p=1" target="_blank" class="project-link">
+                                🔗 Lihat Katalog Digital Proyek (FlipHTML5)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Tombol Kembali ke Halaman My Proyek -->
+        <div class="button-group">
+            <a href="proyek.html" class="btn btn-semester-back" id="backBtn">Back To My Proyek</a>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT HANDLING ANIMASI TRANSISI KELUAR -->
+    <script>
+        const backBtn = document.getElementById('backBtn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        backBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // Menahan perpindahan halaman sementara
+            const targetUrl = this.getAttribute('href');
+
+            // Tambahkan kelas animasi keluar (retract)
+            backBtn.classList.add('retract');
+            projectCards.forEach(card => card.classList.add('retract'));
+
+            // Tunggu durasi animasi (0.5 detik), lalu pindah ke proyek.html
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 500);
+        });
+    </script>
+
+</body>
+</html>

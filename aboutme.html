@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Ehren Gelen Stanislaw (Transformers Theme)</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Script Baca Tema Langsung di Head (Menghilangkan Delay/Kilatan Warna) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('transformersTheme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('theme-megatron');
+            } else {
+                document.documentElement.classList.add('theme-optimus');
+            }
+        })();
+    </script>
+
+    <style>
+        /* Gaya Tambahan Khusus List Kebawah */
+        .skills-section {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .skill-group {
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 20px 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3eff73;
+        }
+
+        .skill-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #3eff73;
+        }
+
+        /* Tampilan List Kebawah */
+        .vertical-list {
+            list-style-type: disc;
+            padding-left: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .vertical-list li {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .skill-title {
+                font-size: 1.2rem;
+            }
+            .vertical-list li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <!-- Header Logo Kanan Atas -->
+        <div class="header-logo">
+            <img src="gambar/logo.png" alt="Logo">
+        </div>
+
+        <div class="about-content" id="aboutContent">
+            <h1 class="about-title">About Me</h1>
+            
+            <p class="about-text">I am now a student from the PENS campus</p>
+            <p class="about-text">I am now in semester 5</p>
+            <p class="about-text">I'm from the TRM study program, class A</p>
+
+            <!-- SEKSI SKILL & APLIKASI LIST KEBAWAH -->
+            <div class="skills-section">
+                
+                <!-- Kelompok Software & Aplikasi -->
+                <div class="skill-group">
+                    <h2 class="skill-title">Software & Tools</h2>
+                    <ul class="vertical-list">
+                        <li>Adobe Illustrator</li>
+                        <li>Blender</li>
+                        <li>VS Code</li>
+                        <li>Android Studio</li>
+                        <li>Resolume Arena</li>
+                        <li>Ren'Py</li>
+                        <li>Adobe After Effects</li>
+                        <li>Unity Engine</li>
+                    </ul>
+                </div>
+
+                <!-- Kelompok Bahasa Pemrograman -->
+                <div class="skill-group">
+                    <h2 class="skill-title">Bahasa Pemrograman</h2>
+                    <ul class="vertical-list">
+                        <li>C / C++</li>
+                        <li>Java</li>
+                        <li>HTML & CSS</li>
+                        <li>Python</li>
+                        <li>C# (Unity)</li>
+                        <li>Dart (Flutter)</li>
+                        <li>Bash / Shell (Linux)</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TOMBOL BACK TO HOME DENGAN ANIMASI ROLL-OUT & RETRACT -->
+        <div class="button-group">
+            <a href="index.html" class="btn btn-about-back" id="backBtn">Back To Home</a>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT HANDLING ANIMASI OUT SAAT DIKLIK -->
+    <script>
+        const backBtn = document.getElementById('backBtn');
+        const aboutContent = document.getElementById('aboutContent');
+
+        backBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // Tahan perpindahan halaman sementara
+            const targetUrl = this.getAttribute('href');
+
+            // Jalankan animasi keluar (retract / shape-shift out)
+            backBtn.classList.add('retract');
+            aboutContent.classList.add('retract');
+
+            // Tunggu animasi out selesai (0.5 detik), lalu pindah halaman
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 500);
+        });
+    </script>
+
+</body>
+</html>
